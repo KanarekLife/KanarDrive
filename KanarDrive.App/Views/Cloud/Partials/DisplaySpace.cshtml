@@ -1,0 +1,10 @@
+﻿@model KanarDrive.App.Models.Cloud.CloudModel
+@{
+    var used = Convert.ToDouble(Model.CurrentSpace);
+    var max = Convert.ToDouble(Model.AvailableSpaceToUser * 1_000_000_000);
+    double percentage = Convert.ToInt32(Math.Round(used / max * 100));
+}
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: @percentage%;"></div>
+</div>
+<p>Obecnie twoje pliki zajmują: @((used / 1_000_000_000).ToString("N2")) z @Model.AvailableSpaceToUser gigabajtów (@((Model.CurrentSpace * 0.000001).ToString("N2")) MB)</p>

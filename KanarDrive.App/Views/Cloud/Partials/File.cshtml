@@ -1,0 +1,27 @@
+﻿@model LiteDB.LiteFileInfo<string>
+<tr>
+    <th scope="row">
+        <input id='@($"{Model.Id}-checkbox")' type="checkbox" onclick="selectFile('@Model.Id')"/>
+    </th>
+    <td>
+        <a href="@Url.Action("Download", "Cloud", new {id = Model.Id})">
+            @Model.Filename
+        </a>
+    </td>
+    <td>
+        @(((double)Model.Length / 1_000_000).ToString("N2")) MB
+    </td>
+    <td>
+         <button class="btn btn-primary" id='@($"{Model.Id}-share")' onclick="share('@Model.Id')">@(Model.Metadata["public"] ? "Udostępniony" : "Nieudostępniony")</button>
+    </td>
+    <td>
+        <button class="btn btn-danger" onclick="removeFile('@Model.Id')">
+            Usuń
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-info" onclick="renameFile('@Model.Id', '@Model.Filename')">
+            Zmień nazwę
+        </button>
+    </td>
+</tr>

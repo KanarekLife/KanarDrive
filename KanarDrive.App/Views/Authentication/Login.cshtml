@@ -1,0 +1,31 @@
+﻿@model KanarDrive.App.Models.Authentication.LoginModel
+
+@{
+    ViewBag.Title = "Zaloguj się";
+    Layout = "_Layout";
+}
+
+<h3 class="text-center">Zaloguj się!</h3>
+<form method="post" asp-action="Login" class="text-center">
+    <div class="form-group">
+        <div>
+            <label asp-for="Email">Adres E-Mail</label>
+        </div>
+        <div>
+            <input type="email" asp-for="Email" placeholder="Adres Email"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <label asp-for="Password">Hasło</label>
+        </div>
+        <div>
+            <input type="password" asp-for="Password" placeholder="Hasło"/>
+        </div>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" asp-for="Remember"/>
+        <label class="form-check-label" asp-for="Remember">Zapamiętaj</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Zaloguj się</button>
+</form>

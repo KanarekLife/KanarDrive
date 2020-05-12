@@ -1,0 +1,38 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="@Url.Action("Index", "Home")">KanarSite</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "Home")">Strona główna</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="clock">Włącz obsługę JS aby zobaczyć ten zegar!</a>
+            </li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown">
+                        Witaj, @User.Identity.Name
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Ustawienia konta</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Cloud")">Chmura plików</a>
+                        <a class="dropdown-item" href="@Url.Action("Logout", "Authentication")">Wyloguj się</a>
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Login", "Authentication")">Zaloguj</a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

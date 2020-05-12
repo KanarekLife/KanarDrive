@@ -1,0 +1,21 @@
+﻿@model string
+
+@if (Model != "/.")
+{
+    <tr>
+        <th scope="row">
+            <input type="checkbox" disabled="disabled"/>
+        </th>
+        <td>
+            <a href="@Url.Action("Index", "Cloud", new
+                     {
+                         path = System.IO.Path.Join(Model.Split('/').SkipLast(1).ToArray())
+                     })">
+                .. (Wróć do poprzedniego folderu)
+            </a>
+        </td>
+        <td>
+            Folder
+        </td>
+    </tr>
+}

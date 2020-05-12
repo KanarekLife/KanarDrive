@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="LiteDB" Version="5.0.5" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="wwwroot" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Cloud\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cloud\Partials\CreateFolder.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cloud\Partials\Directory.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cloud\Partials\File.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cloud\Partials\UpperDirectory.cshtml" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\loading.gif" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\KanarDrive.Common\KanarDrive.Common.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Content Update="appsettings.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+</Project>

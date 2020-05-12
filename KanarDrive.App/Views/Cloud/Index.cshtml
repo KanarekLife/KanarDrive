@@ -1,0 +1,54 @@
+﻿@model KanarDrive.App.Models.Cloud.CloudModel
+@{
+    ViewBag.Title = "Chmura plików";
+    Layout = "_Layout";
+}
+
+@section Scripts {
+    <script src="/js/cloud-min.js"></script>
+}
+
+<h2 class="text-center">Chmura plików</h2>
+<div class="container">
+    <div class="row">
+        @if (Model == null)
+        {
+            <div class="col">
+                <h2 class="text-center">Nie znaleziono takiego pliku lub folderu!</h2>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-4">
+                <input id="file-uploader" type="file" class="file" data-preview-file-type="text">
+            </div>
+            <div class="col">
+                <partial name="Partials/DisplaySpace" model="@Model"/>
+                <partial name="Partials/CurrentLocation" model="@Model"/>
+                <partial name="Partials/Actions"/>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nazwa pliku</th>
+                        <th scope="col">Wielkość pliku</th>
+                        <th scope="col">Status udostępniania</th>
+                        <th scope="colgroup" colspan="2">Akcje</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <partial name="Partials/UpperDirectory" model="@($"{Model.Path}/{Model.Name}")"/>
+                    @foreach (var folder in Model.Directories)
+                    {
+                        <partial name="Partials/Directory" model="folder"/>
+                    }
+                    @foreach (var file in Model.Files)
+                    {
+                        <partial name="Partials/File" model="file"/>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

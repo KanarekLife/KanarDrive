@@ -1,0 +1,40 @@
+﻿@model KanarDrive.Common.Entities.Cloud.UserDirectory
+
+@{
+    string link;
+    if (Model.Path == null)
+    {
+        link = Url.Action("Index", "Cloud", new
+        {
+            path = Model.Name
+        });
+    }
+    else
+    {
+        link = Url.Action("Index", "Cloud", new
+        {
+            path = $"{Model.Path}/{Model.Name}"
+        });
+    }
+}
+@if (Model.Name != "." || Model.Path != null)
+{
+    <tr>
+        <th scope="row">
+            <input type="checkbox" disabled="disabled"/>
+        </th>
+        <td>
+            <a href="@link">
+                @Model.Name
+            </a>
+        </td>
+        <td>
+            Folder
+        </td>
+        <td>
+            <button class="btn btn-danger" onclick="removeFolder('@Model.Id')">
+                Usuń
+            </button>
+        </td>
+    </tr>
+}

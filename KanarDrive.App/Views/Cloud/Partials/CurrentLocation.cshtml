@@ -1,0 +1,21 @@
+﻿@model KanarDrive.App.Models.Cloud.CloudModel
+@{
+    var path = "";
+}
+<div class="row text-center">
+    <a href="@Url.Action("Index", "Cloud", new
+             {
+                 path = ""
+             })">
+        .
+    </a>
+    @foreach (var element in Model.DisplayReadyPath.Split('/').Where(x => x != "/"))
+    {
+        path += element;
+        <a href="@Url.Action("Index", "Cloud", new {path})">/@element</a>
+        path += '/';
+    }
+    @{
+        path = string.Join("", path.SkipLast(1).ToArray());
+    }
+</div>
