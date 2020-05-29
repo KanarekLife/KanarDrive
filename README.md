@@ -1,7 +1,7 @@
 # KanarDrive
 My own custom self-hosted google drive alternative. Still work in progress...
 ## Try it out yourself!
-https://kanar-drive.herokuapp.com/
+https://kanar-drive.kanareklife.me/
 Account: sample@mail.com - S@mp1eP@ssword 
 Database is temporary!
 ## Functions:
